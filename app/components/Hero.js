@@ -1,14 +1,26 @@
 
-export default function Hero(){
+import Image from "next/image";
+
+export default function Hero() {
     return (
-        <section style={{ background: '#4b3d05ff', padding: '3rem 1rem', textAlign: 'center' }}>
-            <h1 style={{ fontSize: '2rem', margin: 0 }}>Bathroom Beverage Leverage System</h1>
-            <p style={{ maxWidth: 800, margin: '1rem auto' }}>
-                The cutting edge of bathroom refreshment technology - keep your beverages icy cold while you're steamy hot.
+        <section style={{ background: 'white', color: 'black', padding: '3rem 1rem', textAlign: 'center' }}>
+            <div style={{ maxWidth: 800, margin: '0 auto' }}>
+                <Image src="/images/cad-model.png" alt="BBL CAD Model" width={1200} height={800} style={{ width: '100%', height: 'auto', borderRadius: 16, marginBottom: '2rem' }} />
+            </div>
+
+            <h1 style={{ fontSize: '2rem', margin: 0 }}>Bathroom beverage Leverage System</h1>
+
+            <p style={{ maxWidth: 800, margin: '1rem auto'}}>
+                The cutting edge of bathroom refreshment technology - keep your beverages ice cold while you're steamy hot.
             </p>
-            <div style={{ marginTop: '1rem'}}>
-                <a href="/product" style={{ marginRight: '1rem'}}>Learn More</a>
-                <a href="/store">Shop Now</a>
+
+            <p style={{ maxWidth: 800, margin: '1rem auto' }}>
+                Utilizing the rotation system from a traditional revolver cylinder, this innovation maximize ease and accessibility while compromising heavily on convenience.
+            </p>
+
+            <div style={{marginTop: '1rem' }}>
+                <a href="/product" style={{ marginRight: '1rem' }}>Learn More</a>
+                <a href=".store">Shop Now</a>
             </div>
         </section>
     );

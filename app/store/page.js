@@ -1,5 +1,7 @@
-import dynamic from 'next/dynamic';
-const StoreClient = dynamic(() => import('../components/StoreClient'), { ssr: false });
+
+"use client";
+
+import StoreClient from "../components/StoreClient";
 
 export default function StorePage() {
     return (

@@ -1,24 +1,12 @@
 
-export default function Hero() {
+export default function ProductDetails() {
     return (
         <div>
-            <h2>Introducing the BBL system</h2>
-            <p>
-                Utilizing the rotation system from a traditional revolver sylinder, this innovation is designed to maximize
-                ease and accessibility while compromising heavily on convenience.
-            </p>
-            <h3>Features</h3>
-            <ul>
-                <li>Glass face for visibility and insulation</li>
-                <li>High-quality materials to keep beverages cold</li>
-                <li>Revolver-style sylinder for quick dispensing</li>
-            </ul>
-
-            <h3>Inspiration</h3>
-            <p>We scoured the world for convenient ways of dispensing your refreshments - the revolver cylinder won.</p>
-
-            <h3>About the company</h3>
-            <p>Founded in the Norm computer labs by four mechanical engineers - proudly Montanan.</p>
+            <h2>The Product</h2>
+            <p>The BBL system include a glass face to ensure you never forget which can is next. The glassfront doubles as insulation in a steamy environment.</p>
+            <p>Our high-quality materials keeep your beverages icy cold while you're steamy hot.</p>
+            <h3>Mechanism</h3>
+            <p>The system used a revolver-style cylinder - trusted by cowboys since the 1700s. Now used for pleasure, not pain.</p>
         </div>
     );
 }
