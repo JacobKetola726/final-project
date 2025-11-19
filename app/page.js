@@ -10,10 +10,10 @@ export default function Home() {
         <h2>Explore</h2>
         <ul>
           <li><Link href="/product">Product Details</Link></li>
-          <li><Link href="/Store">Store</Link></li>
-          <li><Link href="/Team">Team</Link></li>
+          <li><Link href="/store">Store</Link></li>
+          <li><Link href="/team">Team</Link></li>
           <li><Link href="/faq">FAQ</Link></li>
-          <li><Link href="/Cart">Cart</Link></li>
+          <li><Link href="/cart">Cart</Link></li>
         </ul>
       </section>
     </div>

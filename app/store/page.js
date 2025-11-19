@@ -9,5 +9,7 @@ export default function StorePage() {
             <h1>Store</h1>
             <StoreClient />
         </div>
+
+        
     );
 }
