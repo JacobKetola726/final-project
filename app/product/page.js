@@ -8,8 +8,8 @@ export default function ProductPage(){
         <h1>About the product</h1>
         <p>The product is a premium, limited-run item — beautifully crafted and engineered. This page explains features, specs and why people love it.</p>
         <ul>
-          <li>Feature A — clear benefit</li>
-          <li>Feature B — clear benefit</li>
+          <li>Feature A</li>
+          <li>Feature B</li>
           <li>Limited quantity</li>
         </ul>
         <h2>Specs</h2>

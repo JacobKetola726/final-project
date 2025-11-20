@@ -6,12 +6,13 @@ export default function CreatorsPage(){
       <Header />
       <section style={{ padding: 28, maxWidth: 900 }}>
         <h1>About the creators</h1>
-        <p>We are a small team of designers and engineers who wanted to build something useful and beautiful. Here's our story.</p>
+        <p>We are a small team of designers and engineers who wanted to build something useful and beautiful. We are Beverage Leverage Worldwide.</p>
         <h2>Team</h2>
         <ul>
-          <li>Alex — Product Designer</li>
-          <li>Jordan — Hardware Engineer</li>
-          <li>Taylor — Operations</li>
+          <li>Team Member 1</li>
+          <li>Team Member 1</li>
+          <li>Team Member 1</li>
+          <li>Team Member 1</li>
         </ul>
       </section>
     </main>
