@@ -10,7 +10,6 @@ export default function PreorderPage() {
   const params = useSearchParams()
   const mode = params.get('mode') || null
 
-  // Hooks must always be at the top
   const [authed, setAuthed] = useState(false)
   const [position, setPosition] = useState(null)
   const [user, setUser] = useState(null)
