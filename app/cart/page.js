@@ -1,42 +1,45 @@
 
 "use client";
 
-import Link from "next/link";
-import { useCart } from "../context/CartContext";
+import { useCart } from '../context/CartContext'
 
 export default function CartPage() {
-    const { cart, removeItem } = useCart();
+    const { cart, removeItem, clearCart } = useCart()
 
-    const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    async function handleCheckout() {
+        try {
+            const res = await fetch('/api/checkout', {
+                method: 'POST',
+                body: JSON.stringify(cart)
+            })
+            const data = await res.json()
+            alert(data.message + ' Total: $' + data.orderTotal)
+            clearCart()
+        } catch (err) {
+            console.error(err)
+            alert('Checkout failed')
+        }
+    }
 
     return (
-        <div style={{ maxWidth: 900, margin: '2rem auto' }}>
-            <h1>Your Cart</h1>
-
-            {cart.lenth === 0 ? (
-                <p>Your cart is empty. Go to the <Link href="/store">Store</Link>.</p>
-
-            ) : (
-                <>
-                {cart.map(item => (
-                    <div key={item.id} style={{ borderBottom: '1px solid #ddd', padding: 'rem 0', display: 'flex', justifyContent: 'space=between', alignItems: 'center' }}>
-                        <div>
-                            <strong>{item.name}</strong>
-                            <p>${item.price.toFixed(2)} x {item.qty}</p>
-                        </div>
-                        <div style={{ display: 'flex', gap: '0.5rem' }}>
-                            <button onClick={() => removeItem(item.id)} style={{ background: 'red', color: 'white', padding: '0.4rem 1rem', border: 'none', cursor: 'pointer' }}>Remove</button>
-                        </div>
+        <main>
+            <section style={{ padding: 28 }}>
+                <h1>Your Cart</h1>
+                {cart.length === 0 ? <p>Your cart is empty</p> :
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        {cart.map(item => (
+                            <div key={item.id} style={{ display: 'flex', justifyContent: 'space-between', border: '1px solid #eee', padding: 12, borderRadius: 8 }}>
+                                <div>
+                                    <strong>{item.name}</strong>
+                                    <p>${item.price?.toFixed(2) || '0.00'} x {item.qty || 1}</p>
+                                </div>
+                                <button onClick={() => removeItem(item.id)} style={{ background: 'red', color: 'white', padding: '0.4rem 1rem', border: 'none', cursor: 'pointer' }}>Remove</button>
+                            </div>
+                        ))}
+                        <button onClick={handleCheckout} style={{ marginTop: 12, padding: '10px 16px', background: 'green', color: 'white', border: 'none', borderRadius: 6 }}>Checkout</button>
                     </div>
-                ))}
-
-                <h2>Total: ${total.toFixed(2)}</h2>
-
-                <Link href="/checkout" style={{ display: 'inline-block', marginTop: '1rem', padding: '0.5rem 1rem', background: '#1d4ed8', color: 'white', borderRadius: 4 }}>
-                    Proceed to Checkout
-                </Link>
-            </>
-            )}
-        </div>
-    );
+                }
+            </section>
+        </main>
+    )
 }

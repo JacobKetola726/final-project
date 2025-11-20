@@ -19,13 +19,15 @@ export default function Navbar() {
                 </div>
 
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <Link href="/product" style={{ color: 'white'}}>Product</Link>
-                    <Link href="/store" style={{ color: 'white'}}>Store</Link>
-                    <Link href="/team" style={{ color: 'white'}}>Team</Link>
-                    <Link href="/faq" style={{ color: 'white'}}>FAQ</Link>
-                    <Link href="/cart" style={{ color: 'white', fontWeight: '700' }}>
+                    <Link href="/product">Product</Link>
+                    <Link href="/store">Store</Link>
+                    <Link href="/team">Team</Link>
+                    <Link href="/faq">FAQ</Link>
+                    <Link href="/cart" style={{ fontWeight: '700' }}>
                         Cart {count > 0 ? `(${count})` : ""}
                     </Link>
+                    <Link href="/preorder">Pre-Order</Link>
+                    <Link href="/admin/waitlist">Admin</Link>
                 </div>
             </nav>
         </header>
