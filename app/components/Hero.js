@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
     return (
-        <section style={{ background: 'white', color: 'black', padding: '3rem 1rem', textAlign: 'center' }}>
+        <section style={{ background: 'black', color: 'white', padding: '3rem 1rem', textAlign: 'center' }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
                 <Image src="/images/cad-model.png" alt="BBL CAD Model" width={1200} height={800} style={{ width: '100%', height: 'auto', borderRadius: 16, marginBottom: '2rem' }} />
             </div>
@@ -19,8 +19,8 @@ export default function Hero() {
             </p>
 
             <div style={{ marginTop: '1rem' }}>
-                <a href="/product" style={{ background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Learn More</a>
-                <a href="/store" style={{ background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Shop Now</a>
+                <a href="/product" style={{ color: 'black', background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Learn More</a>
+                <a href="/store" style={{ color: 'black', background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Shop Now</a>
             </div>
         </section>
     );
