@@ -10,7 +10,11 @@ export default function Navbar() {
     const count = cart.reduce((s, i) => s + (i.qty || 0), 0);
 
     return (
+<<<<<<< HEAD
         /*<header style={{ background: 'black', color: 'white', padding: '1rem 2rem' }}>*/
+=======
+        <header style={{ background: 'black', color: 'white', padding: '1rem 2rem' }}>
+>>>>>>> 0c07cff3edba942a8037994c2c63613e5caf2f60
             <nav style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: 700 }}>
@@ -30,6 +34,10 @@ export default function Navbar() {
                     <Link href="/admin/waitlist">Admin</Link>
                 </div>
             </nav>
+<<<<<<< HEAD
         /*</header>*/
+=======
+        </header>
+>>>>>>> 0c07cff3edba942a8037994c2c63613e5caf2f60
     );
 }
