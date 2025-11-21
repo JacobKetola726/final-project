@@ -1,35 +1,27 @@
 
-"use client";
-
-import Link from "next/link";
-import { useCart } from "../context/CartContext";
 import Image from "next/image";
 
-export default function Navbar() {
-    const { cart } = useCart();
-    const count = cart.reduce((s, i) => s + (i.qty || 0), 0);
-
+export default function Hero() {
     return (
-        <header style={{ background: 'black', color: 'white', padding: '1rem 2rem' }}>
-            <nav style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontWeight: 700 }}>
-                    <Image src="/images/BBW-logo.png" alt="BBW logo" width={60} height={60} style={{ height: 'auto', borderRadius: '12px'}}/>
-                    <Link href="/" style={{ color: 'white', textDecoration: 'none' }}>Bathroom Beverages WorldWide</Link>
-                </div>
+        <section style={{ background: 'black', color: 'white', padding: '3rem 1rem', textAlign: 'center' }}>
+            <div style={{ maxWidth: 800, margin: '0 auto' }}>
+                <Image src="/images/cad-model.png" alt="BBL CAD Model" width={1200} height={800} style={{ width: '100%', height: 'auto', borderRadius: 16, marginBottom: '2rem' }} />
+            </div>
 
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                    <Link href="/product">Product</Link>
-                    <Link href="/store">Store</Link>
-                    <Link href="/team">Team</Link>
-                    <Link href="/faq">FAQ</Link>
-                    <Link href="/cart" style={{ fontWeight: '700' }}>
-                        Cart {count > 0 ? `(${count})` : ""}
-                    </Link>
-                    <Link href="/preorder">Pre-Order</Link>
-                    <Link href="/admin/waitlist">Admin</Link>
-                </div>
-            </nav>
-        </header>
+            <h1 style={{ fontSize: '2rem', margin: 0 }}>Bathroom Beverage Leverage System</h1>
+
+            <p style={{ maxWidth: 800, margin: '1rem auto'}}>
+                The cutting edge of bathroom refreshment technology - keep your beverages ice cold while you're steamy hot.
+            </p>
+
+            <p style={{ maxWidth: 800, margin: '1rem auto' }}>
+                Utilizing the rotation system from a traditional revolver cylinder, this innovation maximize ease and accessibility while compromising heavily on convenience.
+            </p>
+
+            <div style={{ marginTop: '1rem' }}>
+                <a href="/product" style={{ color: 'black', background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Learn More</a>
+                <a href="/store" style={{ color: 'black', background: 'lightgray', border: '1px solid gray', borderRadius: '5px', marginRight: '1rem', padding: '0.5rem 1rem', display: 'inline-block' }}>Pre-Order</a>
+            </div>
+        </section>
     );
 }
