@@ -1,12 +1,19 @@
 
 'use client'
 
-export const dynamic = "force-dynamic";
 
 import AuthForm from '../components/AuthForm.jsx'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { getAuth } from '../lib/authClient'
+
+export default function PreorderContent(){
+    return (
+        <Suspense>
+            <PreorderContent />
+        </Suspense>
+    );
+}
 
 export default function PreorderPage() {
     const params = useSearchParams()
