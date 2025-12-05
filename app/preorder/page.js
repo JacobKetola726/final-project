@@ -58,7 +58,7 @@ export default function PreorderPage() {
 
     return (
         <main>
-            <section style={{ padding: 28, maxWidth: 800 }}>
+            <section style={{ padding: 28, maxWidth: 800, margin: 'auto' }}>
                 {position && (
                     <div style={{ marginBottom: 20, padding: 12, background: '#f5f5f5', color: 'black', borderRadius: 8 }}>
                         You are <strong>#{position}</strong> in the waitlist.
@@ -68,17 +68,19 @@ export default function PreorderPage() {
                 <form onSubmit={handlePreorder} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <label>
                         Full name
-                        <input required style={{ width: '100%', padding: 8 }} />
+                        <input required style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
                     </label>
                     <label>
                         Shipping address
-                        <textarea required style={{ width: '100%', padding: 8 }} />
+                        <textarea required style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
                     </label>
                     <label>
                         Quantity
-                        <input type="number" defaultValue={1} min={1} style={{ width: 120, padding: 8 }} />
+                        <input type="number" defaultValue={1} min={1} style={{ width: 120, padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
                     </label>
-                    <button type="submit" style={{ padding: '10px 14px' }}>Place pre-order</button>
+                    <button type="submit" style={{ padding: '10px 14px', background: '#2563eb', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
+                        Place pre-order
+                    </button>
                 </form>
             </section>
         </main>
