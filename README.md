@@ -21,6 +21,7 @@ app that was built to sell the BBLS.
 - User can pre-order and be put into a waitlist
 - User can add items to cart and checkout.
 - Admin page for admins to view waitlist
+- Search bar in the store to find products easier
 
 **Setup: **
 - Put together using Next.js
