@@ -6,9 +6,13 @@ import { useSearchParams } from 'next/navigation';
 import AuthForm from '../components/AuthForm.jsx';
 import { getAuth } from '../lib/authClient';
 
-export const dynamic = 'force-dynamic'; // ensures no pre-render
+export const dynamic = 'force-dynamic'; // avoid prerender
 
-export default function PreorderPage() {
+export default function PreorderPageWrapper() {
+    return <PreorderPage />;
+}
+
+function PreorderPage() {
     const params = useSearchParams();
     const mode = params?.get('mode') || null;
 
