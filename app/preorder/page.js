@@ -1,32 +1,31 @@
 
-'use client'
+'use client';
 
-
-import AuthForm from '../components/AuthForm.jsx'
-import { useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import { getAuth } from '../lib/authClient'
-
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
+import AuthForm from '../components/AuthForm.jsx';
+import { getAuth } from '../lib/authClient';
 
 export default function PreorderPage() {
-    const params = useSearchParams()
-    const mode = params.get('mode') || null
+    const params = useSearchParams();
+    const mode = params.get('mode') || null;
 
-    const [authed, setAuthed] = useState(false)
-    const [position, setPosition] = useState(null)
-    const [user, setUser] = useState(null)
+    const [authed, setAuthed] = useState(false);
+    const [position, setPosition] = useState(null);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const a = getAuth()
-        setAuthed(Boolean(a))
-        setUser(a)
+        const a = getAuth();
+        setAuthed(Boolean(a));
+        setUser(a);
+
         if (a) {
-            const raw = localStorage.getItem('preorders')
-            const orders = raw ? JSON.parse(raw) : []
-            const idx = orders.findIndex(o => o.userId === a.id)
-            if (idx !== -1) setPosition(idx + 1)
+            const raw = localStorage.getItem('preorders');
+            const orders = raw ? JSON.parse(raw) : [];
+            const idx = orders.findIndex(o => o.userId === a.id);
+            if (idx !== -1) setPosition(idx + 1);
         }
-    }, [])
+    }, []);
 
     if (!authed) {
         return (
@@ -36,8 +35,26 @@ export default function PreorderPage() {
                     <AuthForm mode={mode === 'register' ? 'register' : 'login'} />
                 </section>
             </main>
-        )
+        );
     }
+
+    const handlePreorder = (e) => {
+        e.preventDefault();
+        if (!user) return;
+
+        const raw = localStorage.getItem('preorders');
+        const list = raw ? JSON.parse(raw) : [];
+
+        if (!list.find(o => o.userId === user.id)) {
+            list.push({ userId: user.id, email: user.email, ts: Date.now() });
+            localStorage.setItem('preorders', JSON.stringify(list));
+            const idx = list.findIndex(o => o.userId === user.id);
+            setPosition(idx + 1);
+            alert(`Pre-order placed! You are #${idx + 1} in the waitlist.`);
+        } else {
+            alert(`You already placed a pre-order. Your position is #${position}`);
+        }
+    };
 
     return (
         <main>
@@ -48,24 +65,7 @@ export default function PreorderPage() {
                     </div>
                 )}
                 <h1>Pre-order</h1>
-                <form
-                    onSubmit={e => {
-                        e.preventDefault()
-                        if (!user) return
-                        const raw = localStorage.getItem('preorders')
-                        const list = raw ? JSON.parse(raw) : []
-                        if (!list.find(o => o.userId === user.id)) {
-                            list.push({ userId: user.id, email: user.email, ts: Date.now() })
-                            localStorage.setItem('preorders', JSON.stringify(list))
-                            const idx = list.findIndex(o => o.userId === user.id)
-                            setPosition(idx + 1)
-                            alert('Pre-order placed! You are #' + (idx + 1) + ' in the waitlist.')
-                        } else {
-                            alert('You already placed a pre-order. Your position is #' + position)
-                        }
-                    }}
-                    style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
-                >
+                <form onSubmit={handlePreorder} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <label>
                         Full name
                         <input required style={{ width: '100%', padding: 8 }} />
@@ -82,5 +82,5 @@ export default function PreorderPage() {
                 </form>
             </section>
         </main>
-    )
+    );
 }
