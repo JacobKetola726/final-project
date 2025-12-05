@@ -28,7 +28,7 @@ export default function Navbar() {
                         Cart {count > 0 ? `(${count})` : ""}
                     </Link>
                     <Link href="/preorder">Pre-Order</Link>
-                    <Link href="/admin/waitlist">Admin</Link>
+                    <Link href="/admin/waitlist">WaitList</Link>
                 </div>
             </nav>
 
