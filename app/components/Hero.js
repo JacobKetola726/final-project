@@ -5,7 +5,7 @@ export default function Hero() {
     return (
         <section style={{ background: 'black', color: 'white', padding: '3rem 1rem', textAlign: 'center' }}>
             <div style={{ maxWidth: 800, margin: '0 auto' }}>
-                <Image src="/images/cad-model.png" alt="BBL CAD Model" width={1200} height={800} style={{ width: '100%', height: 'auto', borderRadius: 16, marginBottom: '2rem' }} />
+                <Image src="/images/CAD-model.png" alt="BBL CAD Model" width={1200} height={800} style={{ width: '100%', height: 'auto', borderRadius: 16, marginBottom: '2rem' }} />
             </div>
 
             <h1 style={{ fontSize: '2rem', margin: 0 }}>Bathroom Beverage Leverage System</h1>
