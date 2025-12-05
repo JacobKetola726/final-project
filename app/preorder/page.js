@@ -21,16 +21,33 @@ function PreorderPage() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const a = getAuth();
-        setAuthed(Boolean(a));
-        setUser(a);
+        async function fetchUser() {
+            try {
+                const res = await fetch('/api/auth/me');
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.user) {
+                        setUser(data.user);
+                        setAuthed(true);
 
-        if (a) {
-            const raw = localStorage.getItem('preorders');
-            const orders = raw ? JSON.parse(raw) : [];
-            const idx = orders.findIndex(o => o.userId === a.id);
-            if (idx !== -1) setPosition(idx + 1);
-        }
+                        // Load user's preorder position
+                        const raw = localStorage.getItem('preorders');
+                        const orders = raw ? JSON.parse(raw) : [];
+                        const idx = orders.findIndex(o => o.userId === data.user.id);
+                        if (idx !== -1) setPosition(idx + 1);
+                      } else {
+                        setAuthed(false);
+                      }
+                    } else {
+                      setAuthed(false);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    setAuthed(false);
+                }
+            }
+
+        fetchUser();
     }, []);
 
     if (!authed) {
