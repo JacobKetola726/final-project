@@ -6,9 +6,11 @@ import { useSearchParams } from 'next/navigation';
 import AuthForm from '../components/AuthForm.jsx';
 import { getAuth } from '../lib/authClient';
 
+export const dynamic = 'force-dynamic'; // ensures no pre-render
+
 export default function PreorderPage() {
     const params = useSearchParams();
-    const mode = params.get('mode') || null;
+    const mode = params?.get('mode') || null;
 
     const [authed, setAuthed] = useState(false);
     const [position, setPosition] = useState(null);
@@ -58,7 +60,7 @@ export default function PreorderPage() {
 
     return (
         <main>
-            <section style={{ padding: 28, maxWidth: 800, margin: 'auto' }}>
+            <section style={{ padding: 28, maxWidth: 800 }}>
                 {position && (
                     <div style={{ marginBottom: 20, padding: 12, background: '#f5f5f5', color: 'black', borderRadius: 8 }}>
                         You are <strong>#{position}</strong> in the waitlist.
@@ -68,19 +70,17 @@ export default function PreorderPage() {
                 <form onSubmit={handlePreorder} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                     <label>
                         Full name
-                        <input required style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+                        <input required style={{ width: '100%', padding: 8 }} />
                     </label>
                     <label>
                         Shipping address
-                        <textarea required style={{ width: '100%', padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+                        <textarea required style={{ width: '100%', padding: 8 }} />
                     </label>
                     <label>
                         Quantity
-                        <input type="number" defaultValue={1} min={1} style={{ width: 120, padding: 8, borderRadius: 6, border: '1px solid #ccc' }} />
+                        <input type="number" defaultValue={1} min={1} style={{ width: 120, padding: 8 }} />
                     </label>
-                    <button type="submit" style={{ padding: '10px 14px', background: '#2563eb', color: 'white', border: 'none', borderRadius: 6, cursor: 'pointer' }}>
-                        Place pre-order
-                    </button>
+                    <button type="submit" style={{ padding: '10px 14px' }}>Place pre-order</button>
                 </form>
             </section>
         </main>
